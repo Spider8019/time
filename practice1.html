@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SPIDER8019 SAMAY</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rajdhani">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prata">
+ <style>
+ #time{
+  font-size:15vw;
+  font-family:prata;
+  color:#15f4ee;
+  margin-left:14%;
+  margin-top:2px;
+  margin-bottom:10px;
+  }
+ #but1{
+ cursor:pointer;
+ margin-top:20px;
+ background-color:transparent;
+ color:#15f4ee;
+ font-family:prata;
+ border:1px solid #15f4ee;
+  padding-left:10px ;
+  padding-right:10px;
+  padding-top:5px;
+  padding-bottom:5px;
+ }
+#but1:hover{
+ box-shadow:2px 2px 20px 1px red;
+}
+#but1:active{
+background-color:#13f4ee;
+color:white;}
+#but1:focus{
+outline:none;}
+ #day{
+  font-size:18px;
+  color:white;
+  font-family:prata;
+ }
+ </style>
+ <script>
+  function f()
+{   var d=new Date();
+    var seconds,minutes;
+    if(d.getSeconds()<10)
+      seconds="0"+d.getSeconds();
+    else
+      seconds=d.getSeconds();
+    if(d.getMinutes()<10)
+      minutes="0"+d.getMinutes();
+    else
+      minutes=d.getMinutes();
+    if(d.getHours()<12)
+      document.getElementById("ampm").innerHTML="Always bear in mind that your own resolution to succeed is more important than any one thing.";
+    else if(d.getHours()<16)
+      document.getElementById("ampm").innerHTML="Are you stuck again on an afternoon with nothing to do?";
+    else  if(d.getHours()<20)
+      document.getElementById("ampm").innerHTML="Every sunset brings the promise of a new dawn";
+    else 
+      document.getElementById("ampm").innerHTML="We are all searching for someone whose demons play well with ours.</br> Good Night :)";
+    var time=d.getHours()+" : "+minutes+" : "+seconds;
+    document.getElementById("time").innerHTML=time;
+    var day;
+    switch(d.getDay())
+        {case 0:day="Sunday";
+                break;
+         case 1:day="Monday";
+                break;
+         case 2:day="Tuesday";
+                break;
+         case 3:day="Wednesday";
+                break;
+         case 4:day="Thursday";
+                break;
+         case 5:day="Friday";
+                break;
+         case 6:day="Saturday";
+                break;
+        }
+    document.getElementById("day").innerHTML=day;
+  
+   var date1;
+   date1=d.getDate()+" / "+d.getMonth()+" / "+d.getFullYear();
+   document.getElementById("dat").innerHTML=date1;}
+
+
+
+  ///for lattitude and longitude we are going to use google api
+
+ </script>
+</head>
+<body bgcolor="black">
+<center><div style="color:white;font-family:rajdhani;margin-top:30px;font-size:18px;margin-bottom:10px;">SPIDER8019 SAMAY</div></center>
+ <p id="time"></p>
+ <center><p id="ampm" style="color:white;font-family:prata;font-size:18px;margin-top:-20px;"></p></center>
+ 
+ 
+<script>
+setInterval(f,1000);
+</script>
+<hr>
+<center><p id="day"></p>
+<p id="dat" style="color:white;font-family:prata;font-size:30px;margin-top:-10px;"></p>
+<hr style="margin-top:-10px;">
+<button onclick="getLocation()" id="but1">Loaction</button>
+
+<p id="demo" style="color:white;font-family:rajdhani;"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.watchPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+    
+function showPosition(position) {
+    x.innerHTML="Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude + "<br>Altitude(returned if available): " + position.coords.altitude;
+}
+</script>
+
+</center>
+</body>
+</html>
